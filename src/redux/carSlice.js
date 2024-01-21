@@ -5,6 +5,7 @@ const initialState = {
   listCars: [],
   isLoading: false,
   error: null,
+  noMore: false,
 };
 
 const pending = (state) => {
@@ -25,6 +26,9 @@ const carSlice = createSlice({
         state.listCars = [...state.listCars, ...action.payload];
         state.error = null;
         state.isLoading = false;
+        if (action.payload.length < 12) {
+          state.noMore = true;
+        }
       })
       .addCase(getCars.rejected, rejected)
       .addCase(getCars.pending, pending);

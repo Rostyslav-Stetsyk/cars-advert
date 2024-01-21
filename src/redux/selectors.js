@@ -1,2 +1,3 @@
 export const carListSelect = (state) => state.carSlice.listCars;
-export const carLoading = (state) => state.carSlice.isLoading;
+export const carLoadingSelect = (state) => state.carSlice.isLoading;
+export const noMoreSelect = (state) => state.carSlice.noMore;

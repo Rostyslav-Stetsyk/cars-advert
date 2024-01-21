@@ -3,15 +3,19 @@ import axios from "axios";
 
 const carAxiosInstance = axios.create({
   baseURL: "https://65ab9240fcd1c9dcffc694d3.mockapi.io/api/",
+  params: {
+    l: 12,
+  },
 });
 
 export const getCars = createAsyncThunk(
   "cars/getAllCars",
-  async ({ page = 1, signal }) => {
+  async ({ page = 1, signal, ...filters }) => {
+    console.log(filters);
     const response = await carAxiosInstance.get("/cars", {
       params: {
         page,
-        l: 12,
+        ...filters,
       },
       signal,
     });
