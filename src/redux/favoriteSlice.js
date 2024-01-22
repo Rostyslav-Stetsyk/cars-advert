@@ -1,14 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { favoritecars: [] };
+const initialState = { favoriteCars: [] };
 
 const favoriteSlice = createSlice({
   name: "favorite",
   initialState,
   reducers: {
     toggleFavorite(state, action) {
-      state.make = action.payload.make;
-      state.page = action.payload.page;
+      const index = state.favoriteCars.findIndex(
+        ({ id }) => id === action.payload.id
+      );
+      if (index !== -1) {
+        state.favoriteCars.splice(index, 1);
+      } else {
+        state.favoriteCars.push(action.payload);
+      }
     },
   },
 });

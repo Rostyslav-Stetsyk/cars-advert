@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import noImg from "../../img/noImg.png";
 import {
   CarItem,
@@ -9,6 +9,9 @@ import {
 import spryte from "../../img/spryte.svg";
 import { ButtonStyled } from "../FilterForm/FilterForm.styled";
 import { Modal } from "../Modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../redux/favoriteSlice";
+import { favoriteCarsSelect } from "../../redux/selectors";
 
 export const CarCard = ({ car }) => {
   const {
@@ -22,7 +25,12 @@ export const CarCard = ({ car }) => {
     model,
     year,
     rentalPrice,
+    id,
   } = car;
+
+  const dispatch = useDispatch();
+
+  const favoriteCarList = useSelector(favoriteCarsSelect);
 
   const [active, setActive] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -40,10 +48,18 @@ export const CarCard = ({ car }) => {
   const toogleActive = () => {
     if (active) {
       setActive(false);
+      dispatch(toggleFavorite(car));
     } else {
       setActive(true);
+      dispatch(toggleFavorite(car));
     }
   };
+
+  useEffect(() => {
+    if (favoriteCarList.some((el) => el.id === id)) {
+      setActive(true);
+    }
+  }, [favoriteCarList, id]);
 
   return (
     <>
