@@ -1,54 +1,85 @@
 import { useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/filterSlice";
 import { useState } from "react";
-import { StyledForm } from "./FilterForm.styled";
+import {
+  ButtonSearch,
+  StyledFieldSet,
+  StyledForm,
+  StyledInput,
+  StyledLabel,
+} from "./FilterForm.styled";
+import carBrand from "../../data/carBrend.json";
+import { Dropdown } from "../Dropdown/Dropdown";
 
 export const FilterForm = () => {
   const dispatch = useDispatch();
 
+  const [dropDownVisible, setDropDownVisible] = useState(false);
   const [make, setMake] = useState("");
   const [rentalPrice, setRentalPrice] = useState("");
   const [minMileage, setMinMileage] = useState("");
   const [maxMileage, setMaxMileage] = useState("");
 
+  const carBrandFiltered = carBrand.filter((brand) => brand.includes(make));
+
   return (
     <StyledForm>
-      <label>
+      <StyledLabel
+        onFocus={() => setDropDownVisible(true)}
+        onBlur={(e) => {
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            setDropDownVisible(false);
+          }
+        }}
+      >
         Car brand
-        <input
-          type=""
+        <StyledInput
+          type="text"
+          placeholder="Enter the text"
           value={make}
           onChange={(e) => setMake(e.currentTarget.value)}
+          id="carBrand"
         />
-      </label>
-      <label>
+        {dropDownVisible && (
+          <Dropdown
+            data={carBrandFiltered}
+            changeFilter={setMake}
+            setIsOpen={setDropDownVisible}
+          />
+        )}
+      </StyledLabel>
+      <StyledLabel>
         Price / 1 hour
-        <input
+        <StyledInput
+          placeholder="30"
           type="number"
           value={rentalPrice}
           onChange={(e) => setRentalPrice(e.currentTarget.value)}
+          id="perHour"
         />
-      </label>
-      <fieldset>
+      </StyledLabel>
+      <StyledFieldSet>
         <legend>Car mileage / km</legend>
-        <label>
+        <StyledLabel>
           From
-          <input
+          <StyledInput
             type="number"
             value={minMileage}
             onChange={(e) => setMinMileage(e.currentTarget.value)}
+            id="minMileage"
           />
-        </label>
-        <label>
+        </StyledLabel>
+        <StyledLabel>
           To
-          <input
+          <StyledInput
             type="number"
             value={maxMileage}
             onChange={(e) => setMaxMileage(e.currentTarget.value)}
+            id="maxMileage"
           />
-        </label>
-      </fieldset>
-      <button
+        </StyledLabel>
+      </StyledFieldSet>
+      <ButtonSearch
         type="submit"
         onClick={(e) => {
           e.preventDefault();
@@ -56,7 +87,7 @@ export const FilterForm = () => {
         }}
       >
         Search
-      </button>
+      </ButtonSearch>
     </StyledForm>
   );
 };

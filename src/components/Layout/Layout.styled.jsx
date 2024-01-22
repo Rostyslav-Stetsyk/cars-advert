@@ -26,11 +26,16 @@ export const Navigation = styled.nav`
   justify-content: space-around;
 
   & a {
-    color: white;
-    padding: 10px 5px;
+    padding: 14px 44px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
     background-color: #3470ff;
-    border-radius: 5px;
-    &:hover {
+    color: white;
+    border: none;
+
+    &:hover,
+    &:focus {
       background-color: #0b44cd;
     }
   }
