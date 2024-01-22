@@ -6,10 +6,10 @@ import {
   Condition,
   ConditionList,
   Description,
+  ModalButtonStyled,
   StyledModal,
   Titel,
 } from "./Modal.styled";
-import { ButtonStyled } from "../FilterForm/FilterForm.styled";
 
 export const Modal = ({ isOpen, onRequestClose, car }) => {
   const {
@@ -78,7 +78,9 @@ export const Modal = ({ isOpen, onRequestClose, car }) => {
             Price: <span>{rentalPrice.slice(1)}$</span>
           </Condition>
         </ConditionList>
-        <ButtonStyled>Rental car</ButtonStyled>
+        <ModalButtonStyled href="tel:+380730000000">
+          Rental car
+        </ModalButtonStyled>
       </div>
     </StyledModal>
   );

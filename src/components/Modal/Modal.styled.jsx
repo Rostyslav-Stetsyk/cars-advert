@@ -25,7 +25,7 @@ export const StyledModal = styled(ReactModal)`
     height: auto;
   }
 
-  & button:last-child {
+  & a {
     margin-top: 24px;
   }
 `;
@@ -76,4 +76,21 @@ export const ConditionList = styled.p`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+`;
+
+export const ModalButtonStyled = styled.a`
+  display: block;
+  width: fit-content;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #3470ff;
+  color: white;
+  border: none;
+
+  &:hover,
+  &:focus {
+    background-color: #0b44cd;
+  }
 `;
