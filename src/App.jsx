@@ -11,8 +11,8 @@ function App() {
         <Route index element={<Home />}></Route>
         <Route path="catalog" element={<Catalog />}></Route>
         <Route path="favorites"></Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
