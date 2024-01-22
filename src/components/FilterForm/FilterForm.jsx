@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/filterSlice";
 import { useState } from "react";
+import { StyledForm } from "./FilterForm.styled";
 
 export const FilterForm = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export const FilterForm = () => {
   const [maxMileage, setMaxMileage] = useState("");
 
   return (
-    <form>
+    <StyledForm>
       <label>
         Car brand
         <input
@@ -56,6 +57,6 @@ export const FilterForm = () => {
       >
         Search
       </button>
-    </form>
+    </StyledForm>
   );
 };
