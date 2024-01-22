@@ -3,17 +3,18 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   max-width: 322px;
   margin: 0 auto;
+  padding: 30px;
 
   @media screen and (min-width: 768px) {
-    max-width: 626px;
+    max-width: 638px;
   }
 
-  @media screen and (min-width: 1080px) {
-    max-width: 930px;
+  @media screen and (min-width: 1024px) {
+    max-width: 942px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1264px;
+    max-width: 1246px;
   }
 `;
 

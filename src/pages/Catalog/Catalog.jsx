@@ -8,6 +8,7 @@ import {
 } from "../../redux/selectors";
 import { CarCard } from "../../components/CarCard/CarCard";
 import { FilterForm } from "../../components/FilterForm/FilterForm";
+import { CatalogList, CatalogWrapper, LoadMoreButton } from "./Catalog.styled";
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -45,23 +46,23 @@ export const Catalog = () => {
   }, [dispatch, page]);
 
   return (
-    <>
+    <CatalogWrapper>
       <FilterForm />
-      <ul>
+      <CatalogList>
         {carList.map((el) => {
           return <CarCard key={el.id} car={el} />;
         })}
-      </ul>
+      </CatalogList>
       {!noMore && (
-        <button
+        <LoadMoreButton
           disabled={isLoading}
           onClick={() => {
             setPage((prevPage) => prevPage + 1);
           }}
         >
           Load more
-        </button>
+        </LoadMoreButton>
       )}
-    </>
+    </CatalogWrapper>
   );
 };
