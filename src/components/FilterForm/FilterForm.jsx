@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/filterSlice";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   ButtonStyled,
   StyledFieldSet,
@@ -10,9 +10,11 @@ import {
 } from "./FilterForm.styled";
 import carBrand from "../../data/carBrand.json";
 import { Dropdown } from "../Dropdown/Dropdown";
+import { getCars } from "../../redux/operations";
 
 export const FilterForm = () => {
   const dispatch = useDispatch();
+  const controllerRef = useRef();
 
   const [dropDownVisible, setDropDownVisible] = useState(false);
   const [make, setMake] = useState("");
@@ -23,7 +25,17 @@ export const FilterForm = () => {
   const carBrandFiltered = carBrand.filter((brand) => brand.includes(make));
 
   return (
-    <StyledForm>
+    <StyledForm
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(changeFilter({ make, page: 1 }));
+
+        controllerRef.current = new AbortController();
+        const signal = controllerRef.current.signal;
+
+        dispatch(getCars({ signal, page: 1 }));
+      }}
+    >
       <StyledLabel
         onFocus={() => setDropDownVisible(true)}
         onBlur={(e) => {
@@ -79,15 +91,7 @@ export const FilterForm = () => {
           />
         </StyledLabel>
       </StyledFieldSet>
-      <ButtonStyled
-        type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          dispatch(changeFilter({ make }));
-        }}
-      >
-        Search
-      </ButtonStyled>
+      <ButtonStyled type="submit">Search</ButtonStyled>
     </StyledForm>
   );
 };

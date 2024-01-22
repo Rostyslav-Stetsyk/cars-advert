@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCars } from "../../redux/operations";
 import {
   carListSelect,
   carLoadingSelect,
   noMoreSelect,
+  pageSelect,
 } from "../../redux/selectors";
 import { CarCard } from "../../components/CarCard/CarCard";
 import { FilterForm } from "../../components/FilterForm/FilterForm";
 import { CatalogList, CatalogWrapper, LoadMoreButton } from "./Catalog.styled";
+import { changeFilter } from "../../redux/filterSlice";
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -16,10 +18,9 @@ export const Catalog = () => {
   const carList = useSelector(carListSelect);
   const isLoading = useSelector(carLoadingSelect);
   const noMore = useSelector(noMoreSelect);
+  const page = useSelector(pageSelect);
 
   const controllerRef = useRef();
-
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (carList.length) {
@@ -29,7 +30,7 @@ export const Catalog = () => {
     controllerRef.current = new AbortController();
     const signal = controllerRef.current.signal;
 
-    dispatch(getCars({ signal }));
+    dispatch(getCars({ signal, page }));
 
     return () => controllerRef.current.abort();
   }, [dispatch, page, carList]);
@@ -41,7 +42,7 @@ export const Catalog = () => {
     controllerRef.current = new AbortController();
     const signal = controllerRef.current.signal;
 
-    dispatch(getCars({ page, signal }));
+    dispatch(getCars({ signal, page }));
     return () => controllerRef.current.abort();
   }, [dispatch, page]);
 
@@ -57,7 +58,7 @@ export const Catalog = () => {
         <LoadMoreButton
           disabled={isLoading}
           onClick={() => {
-            setPage((prevPage) => prevPage + 1);
+            dispatch(changeFilter({ page: page + 1 }));
           }}
         >
           Load more

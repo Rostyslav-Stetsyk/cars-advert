@@ -10,10 +10,10 @@ const carAxiosInstance = axios.create({
 
 export const getCars = createAsyncThunk(
   "cars/getAllCars",
-  async ({ page = 1, signal, ...filters }) => {
+  async ({ signal }, thunkAPI) => {
+    const filters = thunkAPI.getState().filterSlice;
     const response = await carAxiosInstance.get("/cars", {
       params: {
-        page,
         ...filters,
       },
       signal,

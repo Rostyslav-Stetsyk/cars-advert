@@ -23,7 +23,11 @@ const carSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCars.fulfilled, (state, action) => {
-        state.listCars = [...state.listCars, ...action.payload];
+        if (action.meta.arg.page === 1) {
+          state.listCars = action.payload;
+        } else {
+          state.listCars = [...state.listCars, ...action.payload];
+        }
         state.error = null;
         state.isLoading = false;
         if (action.payload.length < 12) {
