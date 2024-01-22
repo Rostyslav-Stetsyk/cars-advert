@@ -1,4 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+
+const persistConfig = {
+  key: "favorite",
+  storage: storage,
+};
 
 const initialState = { favoriteCars: [] };
 
@@ -20,4 +27,7 @@ const favoriteSlice = createSlice({
 });
 
 export const toggleFavorite = favoriteSlice.actions.toggleFavorite;
-export const favoriteReducer = favoriteSlice.reducer;
+export const favoriteReducer = persistReducer(
+  persistConfig,
+  favoriteSlice.reducer
+);
