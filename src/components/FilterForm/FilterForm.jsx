@@ -2,13 +2,13 @@ import { useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/filterSlice";
 import { useState } from "react";
 import {
-  ButtonSearch,
+  ButtonStyled,
   StyledFieldSet,
   StyledForm,
   StyledInput,
   StyledLabel,
 } from "./FilterForm.styled";
-import carBrand from "../../data/carBrend.json";
+import carBrand from "../../data/carBrand.json";
 import { Dropdown } from "../Dropdown/Dropdown";
 
 export const FilterForm = () => {
@@ -79,7 +79,7 @@ export const FilterForm = () => {
           />
         </StyledLabel>
       </StyledFieldSet>
-      <ButtonSearch
+      <ButtonStyled
         type="submit"
         onClick={(e) => {
           e.preventDefault();
@@ -87,7 +87,7 @@ export const FilterForm = () => {
         }}
       >
         Search
-      </ButtonSearch>
+      </ButtonStyled>
     </StyledForm>
   );
 };
