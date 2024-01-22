@@ -25,6 +25,7 @@ const carSlice = createSlice({
       .addCase(getCars.fulfilled, (state, action) => {
         if (action.meta.arg.page === 1) {
           state.listCars = action.payload;
+          state.noMore = false;
         } else {
           state.listCars = [...state.listCars, ...action.payload];
         }

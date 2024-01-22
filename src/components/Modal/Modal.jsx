@@ -53,7 +53,11 @@ export const Modal = ({ isOpen, onRequestClose, car }) => {
           <use href={spryte + "#icon-x"}></use>
         </svg>
       </ButtonCross>
-      <img src={img} alt={make + " " + model} />
+      <img
+        src={img}
+        alt={make + " " + model}
+        onError={(e) => (e.target.src = noImg)}
+      />
       <div>
         <Titel>
           <h3>

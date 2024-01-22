@@ -50,7 +50,11 @@ export const CarCard = ({ car }) => {
       <CarItem>
         <div>
           <ImgWrapper>
-            <img src={img} alt={make + " " + model} />
+            <img
+              src={img}
+              alt={make + " " + model}
+              onError={(e) => (e.target.src = noImg)}
+            />
             <button onClick={toogleActive}>
               <svg width="18" height="18">
                 {active ? (
