@@ -11,7 +11,6 @@ const carAxiosInstance = axios.create({
 export const getCars = createAsyncThunk(
   "cars/getAllCars",
   async ({ page = 1, signal, ...filters }) => {
-    console.log(filters);
     const response = await carAxiosInstance.get("/cars", {
       params: {
         page,

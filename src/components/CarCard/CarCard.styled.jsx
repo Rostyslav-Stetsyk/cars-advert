@@ -56,6 +56,11 @@ export const TitelAndPrice = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 16px;
+  & h3 {
+    font-weight: 500;
+    font-size: 16px;
+  }
   & h3 > span {
     color: #3470ff;
   }
