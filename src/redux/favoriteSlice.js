@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { make: "", page: 1 };
+const initialState = { favoritecars: [] };
 
-const filterSlice = createSlice({
-  name: "filter",
+const favoriteSlice = createSlice({
+  name: "favorite",
   initialState,
   reducers: {
-    changeFilter(state, action) {
+    toggleFavorite(state, action) {
       state.make = action.payload.make;
       state.page = action.payload.page;
     },
   },
 });
 
-export const changeFilter = filterSlice.actions.changeFilter;
-export const filterReducer = filterSlice.reducer;
+export const toggleFavorite = favoriteSlice.actions.toggleFavorite;
+export const favoriteReducer = favoriteSlice.reducer;
