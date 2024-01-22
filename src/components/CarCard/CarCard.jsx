@@ -1,4 +1,5 @@
 import noImg from "../../img/noImg.png";
+import { HeartCheckbox } from "./CarCard.styled";
 
 export const CarCard = ({ car }) => {
   const {
@@ -27,6 +28,7 @@ export const CarCard = ({ car }) => {
     <li>
       <div>
         <img src={img} alt={make + " " + model} width="274" />
+        <HeartCheckbox type="checkbox" />
       </div>
       <div>
         <h3>
