@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const DropdownWrapper = styled.div`
   position: absolute;
+  z-index: 1;
   height: 272px;
   overflow-y: auto;
   top: 70px;
