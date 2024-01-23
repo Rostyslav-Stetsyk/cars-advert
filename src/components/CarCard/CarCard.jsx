@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import noImg from "../../img/noImg.png";
+import normalSVG from "../../img/svg/normal.svg";
+import activeSVG from "../../img/svg/active.svg";
 import {
   CarItem,
   DescWrapper,
@@ -73,17 +75,9 @@ export const CarCard = ({ car }) => {
             />
             <button onClick={toogleActive}>
               {active ? (
-                <ReactSVG
-                  src="../../img/svg/active.svg"
-                  width="18"
-                  height="18"
-                ></ReactSVG>
+                <ReactSVG src={activeSVG} width="18" height="18"></ReactSVG>
               ) : (
-                <ReactSVG
-                  src="../../img/svg/normal.svg"
-                  width="18"
-                  height="18"
-                ></ReactSVG>
+                <ReactSVG src={normalSVG} width="18" height="18"></ReactSVG>
               )}
             </button>
           </ImgWrapper>

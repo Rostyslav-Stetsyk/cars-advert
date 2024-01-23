@@ -1,5 +1,6 @@
 import { ReactSVG } from "react-svg";
 import noImg from "../../img/noImg.png";
+import crossSVG from "../../img/svg/x.svg";
 import {
   ButtonCross,
   CarSpecifications,
@@ -49,7 +50,7 @@ export const Modal = ({ isOpen, onRequestClose, car }) => {
       style={{ overlay: { backgroundColor: "#12141780" } }}
     >
       <ButtonCross type="button" onClick={onRequestClose}>
-        <ReactSVG src="../../img/svg/x.svg" />
+        <ReactSVG src={crossSVG} />
       </ButtonCross>
       <img
         src={img}
