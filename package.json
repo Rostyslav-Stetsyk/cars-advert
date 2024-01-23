@@ -20,6 +20,7 @@
     "react-modal": "^3.16.1",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.2",
+    "react-svg": "^16.1.32",
     "redux-persist": "^6.0.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.8"

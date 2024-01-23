@@ -6,12 +6,12 @@ import {
   ImgWrapper,
   TitelAndPrice,
 } from "./CarCard.styled";
-import spryte from "../../img/spryte.svg";
 import { ButtonStyled } from "../FilterForm/FilterForm.styled";
 import { Modal } from "../Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../redux/favoriteSlice";
 import { favoriteCarsSelect } from "../../redux/selectors";
+import { ReactSVG } from "react-svg";
 
 export const CarCard = ({ car }) => {
   const {
@@ -72,13 +72,19 @@ export const CarCard = ({ car }) => {
               onError={(e) => (e.target.src = noImg)}
             />
             <button onClick={toogleActive}>
-              <svg width="18" height="18">
-                {active ? (
-                  <use href={spryte + "#icon-active"}></use>
-                ) : (
-                  <use href={spryte + "#icon-normal"}></use>
-                )}
-              </svg>
+              {active ? (
+                <ReactSVG
+                  src="../../img/svg/active.svg"
+                  width="18"
+                  height="18"
+                ></ReactSVG>
+              ) : (
+                <ReactSVG
+                  src="../../img/svg/normal.svg"
+                  width="18"
+                  height="18"
+                ></ReactSVG>
+              )}
             </button>
           </ImgWrapper>
           <DescWrapper>

@@ -1,4 +1,4 @@
-import spryte from "../../img/spryte.svg";
+import { ReactSVG } from "react-svg";
 import noImg from "../../img/noImg.png";
 import {
   ButtonCross,
@@ -49,9 +49,7 @@ export const Modal = ({ isOpen, onRequestClose, car }) => {
       style={{ overlay: { backgroundColor: "#12141780" } }}
     >
       <ButtonCross type="button" onClick={onRequestClose}>
-        <svg width="24" height="24" fill="#121417">
-          <use href={spryte + "#icon-x"}></use>
-        </svg>
+        <ReactSVG src="../../img/svg/x.svg" />
       </ButtonCross>
       <img
         src={img}
