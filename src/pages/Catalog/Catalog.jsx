@@ -32,13 +32,15 @@ export const Catalog = () => {
 
     dispatch(getCars({ signal, page }));
 
-    return () => controllerRef.current.abort();
+    return () => {
+      controllerRef.current.abort();
+    };
   }, [dispatch, page, carList]);
 
   useEffect(() => {
     if (page === 1) return;
 
-    controllerRef.current.abort();
+    controllerRef.current?.abort();
     controllerRef.current = new AbortController();
     const signal = controllerRef.current.signal;
 

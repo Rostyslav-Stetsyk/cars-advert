@@ -49,7 +49,7 @@ export const Modal = ({ isOpen, onRequestClose, car }) => {
       style={{ overlay: { backgroundColor: "#12141780" } }}
     >
       <ButtonCross type="button" onClick={onRequestClose}>
-        <svg width="24" height="24">
+        <svg width="24" height="24" fill="#121417">
           <use href={spryte + "#icon-x"}></use>
         </svg>
       </ButtonCross>

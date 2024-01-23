@@ -6,12 +6,15 @@ ReactModal.setAppElement("#root-modal");
 export const StyledModal = styled(ReactModal)`
   display: block;
   max-width: 541px;
+  max-height: 100vh;
+  overflow-y: auto;
   background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px;
+  border: none;
   border-radius: 24px;
 
   & h4 {
