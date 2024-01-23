@@ -10,7 +10,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HashRouter basename="/cars-advert">
+    <HashRouter>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <App />
