@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": ".",
+  "homepage": "https://Rostyslav-Stetsyk.github.io/cars-advert/",
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/cars-advert/",
